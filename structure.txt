@@ -1,0 +1,50 @@
+STRUKTUR FOLDER PROJECT FOOTBALL DATA SCIENCE
+================================================
+
+📁 csv_files/              # Data dalam format CSV
+   ├── fifa_players.csv
+   ├── top_10_passers.csv
+   ├── top_10_potential.csv
+   └── top_10_potential_u20.csv
+
+📁 png_files/               # File visualisasi/grafik
+   ├── age_vs_rating.png
+   ├── position_analysis.png
+   ├── top_10_passers.png
+   ├── top_10_potential.png
+   └── top_10_potential_u20.png
+
+📁 py_files/                # Script Python
+   ├── download_dataset.py
+   ├── top_passers.py
+   ├── top_potential.py
+   └── top_potential_u20.py
+
+📄 Root Files:
+   ├── demo_analysis.ipynb     # Jupyter Notebook
+   ├── requirements.txt        # Dependencies
+   ├── README.md              # Dokumentasi
+   └── INSTALL_INSTRUCTIONS.md
+
+================================================
+CARA MENGGUNAKAN:
+
+1. Analisis Top 10 Passers:
+   cd py_files
+   python top_passers.py
+
+2. Analisis Top 10 Potential:
+   cd py_files
+   python top_potential.py
+
+3. Analisis Top 10 Potential U-20:
+   cd py_files
+   python top_potential_u20.py
+
+4. Download Dataset:
+   cd py_files
+   python download_dataset.py
+
+Hasil akan disimpan di folder csv_files/ dan png_files/
+================================================
+
