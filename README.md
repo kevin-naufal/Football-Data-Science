@@ -83,12 +83,35 @@ Membandingkan distribusi rating berdasarkan posisi pemain.
 
 ```
 FootballDS/
-├── football_analysis.py      # Script Python utama
-├── demo_analysis.ipynb        # Jupyter Notebook
-├── requirements.txt            # Dependencies
-├── README.md                   # Dokumentasi
-└── fifa_players.csv           # Dataset (harus di-download sendiri)
+├── 📁 py_files/              # Script Python Analisis
+│   ├── download_dataset.py          # Download dataset dari Kaggle
+│   ├── download_player_images.py    # Download gambar pemain
+│   ├── top_passers.py               # Analisis top 10 passers
+│   ├── top_potential.py             # Analisis top 10 potential
+│   ├── top_potential_u20.py         # Analisis top 10 U-20
+│   └── top_defenders_u18.py         # Analisis top 10 defenders U-18
+│
+├── 📁 csv_files/             # Hasil Analisis (Data)
+│   ├── top_10_passers.csv
+│   ├── top_10_potential.csv
+│   ├── top_10_potential_u20.csv
+│   └── top_10_defenders_u18.csv
+│
+├── 📁 png_files/             # Visualisasi Grafik
+│   ├── top_10_passers.png
+│   ├── top_10_potential.png
+│   ├── top_10_potential_u20.png
+│   └── top_10_defenders_u18.png
+│
+├── 📄 demo_analysis.ipynb    # Jupyter Notebook untuk eksplorasi
+├── 📄 requirements.txt        # Dependencies
+├── 📄 README.md              # Dokumentasi proyek
+├── 📄 .gitignore              # Git ignore rules
+├── 📄 GITHUB_SETUP.md        # Panduan upload ke GitHub
+└── 📄 INSTALL_INSTRUCTIONS.md # Instruksi instalasi
 ```
+
+**Note:** Dataset utama `fifa_players.csv` tidak di-commit ke GitHub karena ukurannya besar (~109 MB). Download menggunakan script `download_dataset.py`.
 
 ## 📦 Dependencies
 
