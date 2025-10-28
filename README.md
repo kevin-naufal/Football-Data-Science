@@ -1,15 +1,26 @@
-# ⚽ Football Data Science - Analisis Statistik Pemain Sepak Bola
+# ⚽ Football Data Science - Pencarian & Analisis Statistik Pemain Sepak Bola
 
-Proyek data science untuk menganalisis statistik pemain sepak bola menggunakan dataset FIFA 22 dengan 19,000+ pemain.
+Proyek data science untuk mencari dan menganalisis statistik pemain sepak bola menggunakan dataset FIFA 22 dengan **19,000+ pemain**.
 
 ## 📋 Deskripsi
 
-Proyek ini melakukan berbagai analisis data pemain sepak bola dengan fokus pada:
+Proyek ini menyediakan sistem pencarian interaktif dan analisis data pemain sepak bola dengan fitur:
+
+### 🎯 Fitur Pencarian Interaktif
+- ✅ **Pencarian berdasarkan nama pemain** - dengan normalisasi karakter khusus (è, é, ü, dll)
+- ✅ **Pencarian berdasarkan klub** - pilih liga, lalu klub
+- ✅ **Pencarian berdasarkan negara** - dengan daftar negara lengkap
+- ✅ **Pencarian berdasarkan potensi (range)** - Wo顯示range min/max
+- ✅ **Pencarian berdasarkan umur (range)** - Wo顯示range min/max
+- ✅ **Pencarian berdasarkan posisi** - dengan daftar posisi lengkap
+- 🔍 **Filter lanjutan** - tambahkan multiple filter untuk hasil lebih spesifik
+- 🎛️ **Menu dinamis** - filter yang sudah digunakan tidak muncul lagi
+
+### 📊 Analisis Data
 - ✅ **Top 10 pemain dengan passing terbaik**
 - ✅ **Top 10 pemain dengan potensi tertinggi**
 - ✅ **Top 10 pemain muda (U-20) dengan potensi tertinggi**
 - ✅ **Top 10 defender muda (U-18) dengan potensi tertinggi**
-- 📊 **Visualisasi data interaktif**
 
 ## 🚀 Cara Menggunakan
 
@@ -23,95 +34,94 @@ pip install -r requirements.txt
 
 ### 2. Persiapan Dataset
 
-Download dataset otomatis menggunakan script Python:
+Pastikan file `csv_files/fifa_players.csv` sudah tersedia.
+
+**Download Manual:** [Kaggle - FIFA 22 Complete Player Dataset](https://www.kaggle.com/datasets/stefanoleone992/fifa-22-complete-player-dataset)
+
+### 3. Menjalankan Pencarian Interaktif ⭐
+
+Program utama untuk mencari pemain:
 
 ```bash
-cd py_files
-python download_dataset.py
+python py_files/search_players.py
 ```
 
-Script ini akan mengunduh dataset FIFA 22 dari Kaggle dan menempatkannya di folder `csv_files/`.
+**Fitur Pencarian:**
+1. **Pilih opsi pencarian** (1-6):
+   - Nama pemain
+   - Klub (dengan pilihan liga)
+   - Negara (dengan daftar negara)
+   - Potensi range (dengan min/max)
+   - Umur range (dengan min/max)
+   - Posisi (dengan daftar posisi)
+   
+2. **Tampilkan hasil** (10 pemain pertama)
 
-**Alternatif:** Download manual dari [Kaggle - FIFA 22 Complete Player Dataset](https://www.kaggle.com/datasets/stefanoleone992/fifa-22-complete-player-dataset)
+3. **Tambah filter lanjutan** (opsional):
+   - Filter klub, negara, potensi, umur, atau posisi
+   - Opsi yang sudah digunakan tidak muncul lagi
+   - Bisa melihat hasil kapan saja (Opsi 6)
+   
+4. **Tampilkan hasil akhir**
 
-### 3. Menjalankan Analisis
-
-#### Top 10 Passers
-```bash
-python py_files/top_passers.py
+**Contoh Alur:**
+```
+Menu → Pilih 2 (Klub) → Pilih Liga → Pilih Klub → Tampilkan 10 hasil
+→ Tambah filter? (y/n) → Jika ya → Menu filter → Pilih 4 (Umur)
+→ Lihat range min/max → Masukkan range → Tampilkan hasil
 ```
 
-#### Top 10 Potential
-```bash
-python py_files/top_potential.py
-```
+### 4. Analisis Data (Opsional)
 
-#### Top 10 Potential U-20
-```bash
-python py_files/top_potential_u20.py
-```
-
-#### Top 10 Defenders U-18
-```bash
-python py_files/top_defenders_u18.py
-```
+Semua hasil analisis akan tersimpan di:
+- `csv_files/` - Data CSV
+- `png_files/` - Visualisasi gambar
 
 #### Jupyter Notebook
 ```bash
 jupyter notebook demo_analysis.ipynb
 ```
 
-Semua hasil analisis akan tersimpan di:
-- `csv_files/` - Data CSV
-- `png_files/` - Visualisasi gambar
+## 📊 Fitur Pencarian
 
-## 📊 Analisis yang Dilakukan
+### Pencarian Fleksibel
+- **Nama**: Cari dengan atau tanpa accent (Messi, Mbappé, Müller)
+- **Klub**: Pilih dari 50+ liga, lalu pilih klub
+- **Negara**: Pilih dari 150+ negara
+- **Potensi**: Masukkan range dengan melihat min/max
+- **Umur**: Masukkan range dengan melihat min/max
+- **Posisi**: Pilih dari posisi yang tersedia
 
-### 1. Pemain dengan Passing Paling Akurat
-Mencari 10 pemain teratas berdasarkan kemampuan passing mereka.
+### Filter Lanjutan
+- Gunakan multiple filter untuk hasil lebih spesifik
+- Setiap filter mengurangi hasil pencarian
+- Dapat melihat range min/mức pada tiap filter
+- Opsi filter yang sudah digunakan tersembunyi
 
-### 2. Korelasi Usia vs Overall Rating
-Menganalisis hubungan antara usia pemain dengan rating keseluruhan mereka.
-
-### 3. Top Klub dan Negara
-Menemukan klub dan negara dengan rata-rata rating tertinggi.
-
-### 4. Analisis Posisi
-Membandingkan distribusi rating berdasarkan posisi pemain.
+### Penanganan Karakter Khusus
+- Otomatis menghandle karakter seperti é, ü, ç, ñ
+- Tampilan di Windows console aman
+- Pencarian tetap bekerja meskipun mengetik tanpa accent
 
 ## 📁 Struktur File
 
 ```
 FootballDS/
-├── 📁 py_files/              # Script Python Analisis
-│   ├── download_dataset.py          # Download dataset dari Kaggle
-│   ├── download_player_images.py    # Download gambar pemain
-│   ├── top_passers.py               # Analisis top 10 passers
-│   ├── top_potential.py             # Analisis top 10 potential
-│   ├── top_potential_u20.py         # Analisis top 10 U-20
-│   └── top_defenders_u18.py         # Analisis top 10 defenders U-18
+├── 📁 py_files/              # Script Python
+│   └── search_players.py            # ⭐ PROGRAM UTAMA - Pencarian interaktif
 │
-├── 📁 csv_files/             # Hasil Analisis (Data)
-│   ├── top_10_passers.csv
-│   ├── top_10_potential.csv
-│   ├── top_10_potential_u20.csv
-│   └── top_10_defenders_u18.csv
+├── 📁 csv_files/             # Dataset & Hasil Analisis
+│   └── fifa_players.csv             # ⭐ DATASET UTAMA (harus di-download manual)
 │
-├── 📁 png_files/             # Visualisasi Grafik
-│   ├── top_10_passers.png
-│   ├── top_10_potential.png
-│   ├── top_10_potential_u20.png
-│   └── top_10_defenders_u18.png
+├── 📁 png_files/             # Visualisasi Grafik (opsional)
 │
 ├── 📄 demo_analysis.ipynb    # Jupyter Notebook untuk eksplorasi
 ├── 📄 requirements.txt        # Dependencies
 ├── 📄 README.md              # Dokumentasi proyek
-├── 📄 .gitignore              # Git ignore rules
-├── 📄 GITHUB_SETUP.md        # Panduan upload ke GitHub
-└── 📄 INSTALL_INSTRUCTIONS.md # Instruksi instalasi
+└── 📄 .gitignore              # Git ignore rules
 ```
 
-**Note:** Dataset utama `fifa_players.csv` tidak di-commit ke GitHub karena ukurannya besar (~109 MB). Download menggunakan script `download_dataset.py`.
+**Note:** File `fifa_players.csv` (~109 MB) **harus di-download manual** dan diletakkan di folder `csv_files/`.
 
 ## 📦 Dependencies
 
@@ -121,14 +131,38 @@ FootballDS/
 - **seaborn** - Visualisasi data lanjutan
 - **jupyter** - Notebook interaktif
 
-## 🔍 Contoh Output
+## 🔍 Contoh Penggunaan
 
-Script akan menghasilkan beberapa visualisasi:
+### Pencarian Nama Pemain
+```
+Menu → 1 (Nama) → mbappe
+✓ Found 1 player: Kylian Mbappe
 
-1. **age_vs_rating.png** - Scatter plot korelasi usia vs rating
-2. **top_clubs.png** - Bar chart top 10 klub
-3. **top_nations.png** - Bar chart top 10 negara
-4. **position_analysis.png** - Box plot distribusi rating per posisi
+Apakah Anda ingin menambahkan filter? (y/n): n
+```
+
+### Pencarian Klub dengan Filter
+```
+Menu → 2 (Klub) → Pilih Liga 18 (English Premier League)
+→ Pilih Klub 61 (Manchester City)
+✓ Found 25 players
+
+Tambah filter? (y/n): y
+Filter Menu → 4 (Umur) → Range: 20-30
+✓ Filter applied: 15 pemain remaining
+
+Lihat hasil sekarang? → 6
+```
+
+### Pencarian Potensi dengan Range
+```
+Menu → 4 (Potensi)
+Potensi: [Paling rendah: 46] [Paling tinggi: 95]
+
+Masukkan potensi minimum: 90
+Masukkan potensi maksimum: 95
+✓ Found 50 players with potential 90-95
+```
 
 ## 📝 Catatan
 
